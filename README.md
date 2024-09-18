@@ -1,5 +1,3 @@
-Attention! This program is currently under construction.
-
 Fully autonomous Bitcoin Wallet Generator and Checker.
 This program continuously generates random Bitcoin private keys, converts the private keys into their respective wallet addresses 
 and seeks this addresses in the Blockchain Database.
