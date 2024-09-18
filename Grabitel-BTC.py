@@ -11,10 +11,10 @@ import secrets
 wallets_file_name = 'wallets.txt'
 # wallets_file_name = 'wallets_short.txt'
 result_file_name = ''
-bingo_file_name = ''
+bingo_file_name = 'bingo.txt'
 
 # Setup options
-block_size = 10000
+block_size = 20000
 short_address_size = 10     # max= 34
 satoshi_min_balance = 2000  # min= 1
 
@@ -79,6 +79,17 @@ while True: # To stop the program, press 'Ctrl+ C'
         short_key = key_uncompressed[0:short_address_size]
         if short_key in short_addresses_base:
             print('Found it! ', short_key, key_uncompressed)
+            adress_text = ('{0:,}'.format(block_number * block_size).replace(',', '.') + ' wallets addresses was checked out.' + '\n' +
+                           'Privat key Hex = ' + str(hex(start_address_dec + i))[2:] + '\n' +
+                           'Privat key WIF = ' + str(wif_uncompressed) + '\n' +
+                           'Uncompressed address legacy (P2PKH) = ' + str(key_uncompressed) + '\n' +
+                           '=====================================' + '\n')
+            try:
+                f = open(bingo_file_name, "a")
+                f.write(adress_text)
+                f.close()
+            except: pass
+
     # block_time = time.time() - start_block_time
     total_time = (time.time() - start_time)
     if (block_number * block_size) % 1000000 == 0:
